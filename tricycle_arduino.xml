@@ -1,0 +1,12 @@
+<library path="tricycle_arduino">
+  <class name="tricycle_arduino/TricycleArduinoHardware"
+    type="tricycle_arduino::TricycleArduinoHardware"
+    base_class_type="hardware_interface::SystemInterface">
+    <description>
+      The ros2_control CarlikeBot example using a system hardware interface-type. It uses velocity
+      and position command and state interface for each drive motor and position command and state
+      interface for the steering.
+      It uses ros2_control tricycle_steering.
+    </description>
+  </class>
+</library>
