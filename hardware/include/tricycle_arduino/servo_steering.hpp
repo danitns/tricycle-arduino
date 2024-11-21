@@ -36,17 +36,12 @@ public:
 
     void map_cmd_to_arduino()
     {
-        cmd = clamp(cmd, minControlValue, maxControlValue);
-        cmd_raw = minArduinoValue + std::round(controlToArduinoSlope * (cmd - minControlValue));
+        cmd_raw = cmd * 1000;
     }
 
     void map_pos_to_control()
     {
-        pos_raw = clamp(pos_raw, minArduinoValue, maxArduinoValue);
-        if(pos_raw == 90) {
-            pos_raw = 90.5;
-        }
-        pos = minControlValue + arduinoToControlSlope * (pos_raw - minArduinoValue);
+        pos = pos_raw / 1000;
     }
 };
 

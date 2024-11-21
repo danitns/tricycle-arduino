@@ -290,7 +290,7 @@ hardware_interface::return_type TricycleArduinoHardware::read(
   rear_right_wheel_.pos = rear_right_wheel_.calc_enc_angle();
   rear_right_wheel_.vel = (rear_right_wheel_.pos - pos_prev) / delta_seconds;
 
-  RCLCPP_INFO(rclcpp::get_logger("TricycleArduinoHardware"), "read: %lf %lf %lf", steering_.pos, rear_left_wheel_.pos, rear_right_wheel_.pos);
+  RCLCPP_INFO(rclcpp::get_logger("TricycleArduinoHardware"), "read: %lf %lf %lf", steering_.pos_raw, rear_left_wheel_.pos, rear_right_wheel_.pos);
 
   return hardware_interface::return_type::OK;
 }
@@ -307,7 +307,7 @@ hardware_interface::return_type tricycle_arduino ::TricycleArduinoHardware::writ
 
   steering_.map_cmd_to_arduino();
 
-  RCLCPP_INFO(rclcpp::get_logger("TricycleArduinoHardware"), "write: %lf %d %d", steering_.cmd_raw, rear_left_wheel_counts_per_loop, rear_right_wheel_counts_per_loop);
+  RCLCPP_INFO(rclcpp::get_logger("TricycleArduinoHardware"), "write: %lf %d %d", steering_.cmd, rear_left_wheel_counts_per_loop, rear_right_wheel_counts_per_loop);
 
   comms_.set_motor_values(rear_left_wheel_counts_per_loop, rear_right_wheel_counts_per_loop);
   comms_.set_steering_value(steering_.cmd_raw);

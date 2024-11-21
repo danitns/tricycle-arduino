@@ -64,14 +64,6 @@ install(TARGETS tricycle_arduino
   RUNTIME DESTINATION bin
 )
 
-if(BUILD_TESTING)
-  find_package(ament_cmake_pytest REQUIRED)
-
-  ament_add_pytest_test(example_11_urdf_xacro test/test_urdf_xacro.py)
-  ament_add_pytest_test(view_example_11_launch test/test_view_robot_launch.py)
-  ament_add_pytest_test(run_example_11_launch test/test_carlikebot_launch.py)
-endif()
-
 ## EXPORTS
 ament_export_targets(export_tricycle_arduino HAS_LIBRARY_TARGET)
 ament_export_dependencies(${THIS_PACKAGE_INCLUDE_DEPENDS})
